@@ -34,12 +34,12 @@
 </div>
 <script>
 const key='dashboard_fussball_sponsor_v1';
-const names=['Präsentationsanzug','1. Trikotsatz','2. Trikotsatz','Trainingsanzug','Winterjacke','Torwartausstattung','Sonstiges'];
+const names=['Präsentationsanzug','1. Trikotsatz','2. Trikotsatz','Trainingsanzug','Winterjacke','Sonstiges'];
 const statusList=['Offen','Angefragt','Angebot erhalten','Zugesagt','Bezahlt / bestätigt','Erledigt'];
 function fresh(){return names.map(n=>({name:n,done:false,sponsor:'',status:'Offen',note:''}))}
 let data=fresh();
 try{const saved=JSON.parse(localStorage.getItem(key)||'null');if(Array.isArray(saved)){data=names.map((n,i)=>Object.assign(fresh()[i],saved.find(x=>x.name===n)||saved[i]||{}));}}catch(e){}
-function esc(s){return String(s||'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
+function esc(s){return String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 function save(){localStorage.setItem(key,JSON.stringify(data));progress()}
 function progress(){const done=data.filter(x=>x.done).length,total=data.length,p=Math.round(done/total*100);document.getElementById('count').textContent=done+' / '+total+' erledigt';document.getElementById('bar').style.width=p+'%'}
 function render(){const list=document.getElementById('list');list.innerHTML='';data.forEach((x,i)=>{const item=document.createElement('div');item.className='item';item.innerHTML='<div class="head"><input type="checkbox" '+(x.done?'checked':'')+' data-i="'+i+'" data-f="done"><div class="title">'+esc(x.name)+'</div></div><div class="fields"><div><label>Sponsor / Firma</label><input type="text" value="'+esc(x.sponsor)+'" placeholder="z. B. Firma Mustermann" data-i="'+i+'" data-f="sponsor"></div><div><label>Status</label><select data-i="'+i+'" data-f="status">'+statusList.map(s=>'<option '+(x.status===s?'selected':'')+'>'+s+'</option>').join('')+'</select></div><div class="full"><label>Notiz</label><textarea placeholder="Ansprechpartner, Betrag oder Angebot" data-i="'+i+'" data-f="note">'+esc(x.note)+'</textarea></div></div>';list.appendChild(item)});progress()}
