@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kabinenansprache Generator</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0b1020;color:#f4f7fb;padding:16px}.wrap{max-width:760px;margin:auto}header{background:#141b2d;border:1px solid #263247;border-radius:22px;padding:18px;margin-bottom:16px}h1{margin:0 0 8px;font-size:30px}.sub{margin:0;color:#a9b3c7;line-height:1.4}.box{background:#101726;border:1px solid #263247;border-radius:22px;padding:14px;margin-bottom:14px}h2{margin:8px 0 12px;font-size:20px}label{display:block;color:#a9b3c7;font-size:13px;margin:10px 0 5px}select,input,textarea{width:100%;border:1px solid #263247;border-radius:13px;background:#0b1220;color:#f4f7fb;padding:12px;font-size:16px}textarea{min-height:285px;line-height:1.48;font-family:Arial,Helvetica,sans-serif}.row{display:grid;grid-template-columns:1fr;gap:8px}button,a.btn{display:block;width:100%;text-align:center;text-decoration:none;border:0;border-radius:15px;padding:14px;margin-top:10px;background:#222;color:#fff;font-size:16px;font-weight:bold}.blue{background:#2f80ed}.green{background:#219653}.muted{color:#a9b3c7;font-size:12px;line-height:1.4}.small{font-size:13px;color:#a9b3c7;margin-top:8px}.lion{font-size:42px;margin-bottom:4px}.fixed{background:#141b2d;border:1px solid #263247;border-radius:16px;padding:11px;color:#dbe7ff;font-size:13px;line-height:1.45;margin-top:10px}.counter{color:#a9b3c7;font-size:12px;margin-top:7px}@media(min-width:680px){.row{grid-template-columns:1fr 1fr}}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0b1020;color:#f4f7fb;padding:16px}.wrap{max-width:760px;margin:auto}header{background:#141b2d;border:1px solid #263247;border-radius:22px;padding:18px;margin-bottom:16px}h1{margin:0 0 8px;font-size:30px}.sub{margin:0;color:#a9b3c7;line-height:1.4}.box{background:#101726;border:1px solid #263247;border-radius:22px;padding:14px;margin-bottom:14px}h2{margin:8px 0 12px;font-size:20px}label{display:block;color:#a9b3c7;font-size:13px;margin:10px 0 5px}select,input,textarea{width:100%;border:1px solid #263247;border-radius:13px;background:#0b1220;color:#f4f7fb;padding:12px;font-size:16px}textarea{min-height:420px;height:auto;overflow:hidden;resize:none;line-height:1.5;font-family:Arial,Helvetica,sans-serif}.row{display:grid;grid-template-columns:1fr;gap:8px}button,a.btn{display:block;width:100%;text-align:center;text-decoration:none;border:0;border-radius:15px;padding:14px;margin-top:10px;background:#222;color:#fff;font-size:16px;font-weight:bold}.blue{background:#2f80ed}.green{background:#219653}.muted{color:#a9b3c7;font-size:12px;line-height:1.4}.small{font-size:13px;color:#a9b3c7;margin-top:8px}.lion{font-size:42px;margin-bottom:4px}.fixed{background:#141b2d;border:1px solid #263247;border-radius:16px;padding:11px;color:#dbe7ff;font-size:13px;line-height:1.45;margin-top:10px}.counter{color:#a9b3c7;font-size:12px;margin-top:7px}@media(min-width:680px){.row{grid-template-columns:1fr 1fr}textarea{min-height:500px}}
 </style>
 </head>
 <body>
@@ -45,6 +45,11 @@ let generatedCount=0;
 let lastSpeech='';
 function pick(arr){return arr[Math.floor(Math.random()*arr.length)]}
 function shuffle(arr){return arr.map(v=>[Math.random(),v]).sort((a,b)=>a[0]-b[0]).map(x=>x[1])}
+function resizeOutput(){
+const out=document.getElementById('output');
+out.style.height='auto';
+out.style.height=(out.scrollHeight+8)+'px';
+}
 
 const starts={
 'Vor dem Spiel':[
@@ -160,6 +165,7 @@ safety++;
 lastSpeech=speech;
 generatedCount++;
 document.getElementById('output').value=speech;
+resizeOutput();
 document.getElementById('counter').textContent='Generiert: '+generatedCount+'x';
 document.getElementById('msg').textContent='Neue extrem motivierende Ansprache erstellt.';
 }
@@ -169,6 +175,7 @@ out.select();out.setSelectionRange(0,99999);
 document.execCommand('copy');
 document.getElementById('msg').textContent='Text kopiert.';
 }
+window.addEventListener('resize',resizeOutput);
 generateSpeech();
 </script>
 </body>
