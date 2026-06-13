@@ -25,7 +25,7 @@
 <div class="fixed">Fixer Fokus: Teamgeist · mutig spielen · früh pressen · Zweikämpfe · Leidenschaft. Bei Halbzeit kommt automatisch Comeback/Reaktion dazu.</div>
 <label>Eigene Notiz optional</label>
 <input id="note" placeholder="z. B. außen mutig sein, erste Bälle gewinnen, zusammen verteidigen">
-<button class="blue" onclick="generateSpeech()">Andere Ansprache generieren</button>
+<button class="blue" onclick="generateSpeech()">Ansprache generieren</button>
 <p class="counter" id="counter">Noch nicht generiert.</p>
 </section>
 
@@ -41,6 +41,7 @@
 </div>
 
 <script>
+const STORAGE_KEY='kabinenansprache_last_v2';
 let generatedCount=0;
 let lastSpeech='';
 function pick(arr){return arr[Math.floor(Math.random()*arr.length)]}
@@ -49,6 +50,31 @@ function resizeOutput(){
 const out=document.getElementById('output');
 out.style.height='auto';
 out.style.height=(out.scrollHeight+8)+'px';
+}
+function saveCurrentSpeech(){
+const data={
+situation:document.getElementById('situation').value,
+anrede:document.getElementById('anrede').value,
+note:document.getElementById('note').value,
+speech:document.getElementById('output').value,
+generatedCount:generatedCount
+};
+localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
+}
+function loadCurrentSpeech(){
+try{
+const data=JSON.parse(localStorage.getItem(STORAGE_KEY)||'null');
+if(!data||!data.speech)return;
+if(data.situation)document.getElementById('situation').value=data.situation;
+if(data.anrede)document.getElementById('anrede').value=data.anrede;
+if(data.note!==undefined)document.getElementById('note').value=data.note;
+generatedCount=Number(data.generatedCount)||1;
+lastSpeech=data.speech;
+document.getElementById('output').value=data.speech;
+document.getElementById('counter').textContent='Letzte Ansprache gespeichert · Generiert: '+generatedCount+'x';
+document.getElementById('msg').textContent='Letzte Ansprache wurde geladen. Neu nur über „Ansprache generieren“.';
+resizeOutput();
+}catch(e){}
 }
 
 const starts={
@@ -167,7 +193,8 @@ generatedCount++;
 document.getElementById('output').value=speech;
 resizeOutput();
 document.getElementById('counter').textContent='Generiert: '+generatedCount+'x';
-document.getElementById('msg').textContent='Neue extrem motivierende Ansprache erstellt.';
+document.getElementById('msg').textContent='Neue Ansprache erstellt und gespeichert.';
+saveCurrentSpeech();
 }
 function copySpeech(){
 const out=document.getElementById('output');
@@ -176,7 +203,7 @@ document.execCommand('copy');
 document.getElementById('msg').textContent='Text kopiert.';
 }
 window.addEventListener('resize',resizeOutput);
-generateSpeech();
+window.addEventListener('DOMContentLoaded',loadCurrentSpeech);
 </script>
 </body>
 </html>
