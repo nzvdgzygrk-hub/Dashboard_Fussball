@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kabinenansprache Generator</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0b1020;color:#f4f7fb;padding:16px}.wrap{max-width:760px;margin:auto}header{background:#141b2d;border:1px solid #263247;border-radius:22px;padding:18px;margin-bottom:16px}h1{margin:0 0 8px;font-size:30px}.sub{margin:0;color:#a9b3c7;line-height:1.4}.box{background:#101726;border:1px solid #263247;border-radius:22px;padding:14px;margin-bottom:14px}h2{margin:8px 0 12px;font-size:20px}label{display:block;color:#a9b3c7;font-size:13px;margin:10px 0 5px}select,input,textarea{width:100%;border:1px solid #263247;border-radius:13px;background:#0b1220;color:#f4f7fb;padding:12px;font-size:16px}textarea{min-height:210px;line-height:1.45;font-family:Arial,Helvetica,sans-serif}.row{display:grid;grid-template-columns:1fr;gap:8px}button,a.btn{display:block;width:100%;text-align:center;text-decoration:none;border:0;border-radius:15px;padding:14px;margin-top:10px;background:#222;color:#fff;font-size:16px;font-weight:bold}.blue{background:#2f80ed}.green{background:#219653}.muted{color:#a9b3c7;font-size:12px;line-height:1.4}.small{font-size:13px;color:#a9b3c7;margin-top:8px}.lion{font-size:42px;margin-bottom:4px}@media(min-width:680px){.row{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<div class="lion">🦁⚽</div>
+<h1>Kabinenansprache Generator</h1>
+<p class="sub">Motivierende Ansprachen für die SSVg D-Jugend. Klar, stark und kindgerecht.</p>
+</header>
+
+<section class="box">
+<h2>Einstellung wählen</h2>
+<div class="row">
+<div><label>Situation</label><select id="situation"><option>Vor dem Spiel</option><option>Halbzeit</option><option>Rückstand</option><option>Führung halten</option><option>Letzte Minuten</option><option>Vor einem Topspiel</option></select></div>
+<div><label>Intensität</label><select id="level"><option>Ruhig und klar</option><option>Stark motivierend</option><option>Extrem motivierend</option></select></div>
+<div><label>Fokus</label><select id="focus"><option>Teamgeist</option><option>Zweikämpfe</option><option>Mut am Ball</option><option>Pressing</option><option>Konzentration</option><option>Comeback</option><option>Leidenschaft</option></select></div>
+<div><label>Anrede</label><select id="anrede"><option>Jungs</option><option>Team</option><option>Löwen</option><option>SSVg</option></select></div>
+</div>
+<label>Eigene Notiz optional</label>
+<input id="note" placeholder="z. B. heute mutig spielen, früh draufgehen, einer für alle">
+<button class="blue" onclick="generateSpeech()">Ansprache erstellen</button>
+</section>
+
+<section class="box">
+<h2>Deine Ansprache</h2>
+<textarea id="output" readonly></textarea>
+<button class="green" onclick="copySpeech()">Text kopieren</button>
+<p class="small" id="msg"></p>
+</section>
+
+<a class="btn" href="index.html">Zurück zum Dashboard</a>
+<p class="muted">Hinweis: Die Texte sollen motivieren, aber immer fair bleiben. Keine Beleidigungen, kein Druck, keine Angst machen.</p>
+</div>
+
+<script>
+function pick(arr){return arr[Math.floor(Math.random()*arr.length)]}
+function generateSpeech(){
+const situation=document.getElementById('situation').value;
+const level=document.getElementById('level').value;
+const focus=document.getElementById('focus').value;
+const anrede=document.getElementById('anrede').value;
+const note=document.getElementById('note').value.trim();
+let start={
+'Vor dem Spiel':['Hört kurz zu. Heute geht es nicht darum, wer den schönsten Trick macht. Heute geht es darum, dass wir als Mannschaft auftreten.','Kommt zusammen. Wenn wir gleich rausgehen, sieht jeder sofort: Das ist SSVg. Wir sind bereit.','Jungs, heute zählt vom ersten Schritt an unsere Haltung. Wir laufen nicht hinterher, wir gehen voran.'],
+'Halbzeit':['Atmet kurz durch. Die erste Halbzeit ist vorbei, aber das Spiel ist noch lange nicht entschieden.','Hört zu. Wir haben gesehen, was funktioniert und was besser werden muss. Jetzt zeigen wir, dass wir lernen und reagieren können.','Die zweite Halbzeit gehört der Mannschaft, die mehr will. Und das können wir sein.'],
+'Rückstand':['Kopf hoch. Ein Rückstand entscheidet gar nichts. Entscheidend ist, wie wir jetzt reagieren.','Jetzt zeigt sich Charakter. Jeder kann jubeln, wenn es leicht ist. Wir zeigen jetzt, dass wir Löwen sind.','Wir bleiben ruhig. Wir bleiben zusammen. Ein Tor kann alles drehen.'],
+'Führung halten':['Wir führen, aber wir schlafen nicht ein. Jetzt braucht es Konzentration und klare Aktionen.','Die Führung ist verdient, aber sie ist nur etwas wert, wenn wir weiter arbeiten.','Jetzt nicht nachlassen. Genau jetzt müssen wir erwachsen spielen.'],
+'Letzte Minuten':['Jetzt kommen die Minuten, in denen Wille entscheidet. Jeder Schritt zählt. Jeder Zweikampf zählt.','Die letzten Minuten gehören nicht den Müden. Sie gehören den Mutigen.','Jetzt nochmal alles, aber mit Kopf. Zusammen verteidigen, zusammen angreifen.'],
+'Vor einem Topspiel':['Heute ist ein Spiel, auf das man sich freut. Genau für solche Spiele trainieren wir.','Topspiel heißt nicht Angst. Topspiel heißt Chance. Wir zeigen, wer wir sind.','Heute brauchen wir Mut, Herz und einen klaren Kopf. Genau dafür stehen wir als SSVg.']
+}[situation];
+let middle={
+'Teamgeist':['Keiner spielt allein. Wenn einer verliert, helfen zwei. Wenn einer läuft, laufen alle mit. Wir sind eine Mannschaft.','Wir reden miteinander, wir helfen miteinander, wir kämpfen miteinander. Genau das macht uns stark.'],
+'Zweikämpfe':['Im Zweikampf entscheiden wir mit dem ersten Schritt. Mutig rein, fair bleiben, Ball gewinnen.','Jeder Zweikampf ist eine kleine Botschaft: Wir sind da. Wir lassen uns nichts schenken.'],
+'Mut am Ball':['Habt Mut am Ball. Fordert den Ball, bietet euch an, spielt klar. Fehler sind erlaubt, Verstecken nicht.','Wer mutig spielt, kann etwas verändern. Also Kopf hoch, Ball fordern, nächste Aktion.'],
+'Pressing':['Wir pressen zusammen, nicht einzeln. Einer startet, der Rest schiebt nach. Dann machen wir es dem Gegner schwer.','Wenn wir gemeinsam Druck machen, gewinnen wir Bälle dort, wo es weh tut: vorne.'],
+'Konzentration':['Wir bleiben wach. Einwurf, Ecke, Abstoß, jeder Moment zählt. Konzentration ist auch eine Stärke.','Keine unnötigen Geschenke. Klare Pässe, klare Kommandos, klare Haltung.'],
+'Comeback':['Das nächste Tor ist unser Ziel. Nicht fünf Dinge auf einmal. Erst der nächste Zweikampf, dann der nächste Pass, dann der Abschluss.','Wir drehen das nicht mit Hektik, sondern mit Glauben, Laufbereitschaft und Teamgeist.'],
+'Leidenschaft':['Man soll sehen, dass wir dieses Trikot gerne tragen. Jeder Laufweg, jeder Sprint, jeder Block zeigt Herz.','Spielt mit Feuer im Herzen und Ruhe im Kopf. Genau so spielen Löwen.']
+}[focus];
+let endNormal=['Geht raus, seid mutig, bleibt zusammen. Eins, zwei, drei: SSVg!','Wir glauben an uns. Wir helfen uns. Wir geben alles. Jetzt raus und zeigen!','Heute zählt unser Team. Für das Wappen, für die Mannschaft, für jeden neben euch.'];
+let endStrong=['Wir sind SSVg. Wir tragen den Löwen nicht nur auf dem Emblem, wir zeigen ihn auf dem Platz. Raus da und kämpfen!','Keiner versteckt sich. Jeder übernimmt Verantwortung. Wir sind Löwen, wir sind ein Team, wir sind bereit!','Ab jetzt gibt es nur noch volle Konzentration, volle Energie und volles Herz. SSVg!'];
+let endExtreme=['Jungs, heute muss jeder Gegner merken: Gegen diese Mannschaft ist jede Sekunde Arbeit. Wir sind SSVg, wir sind Löwen, wir gehen zusammen raus und geben alles!','Jetzt wird nicht gezögert. Jetzt wird gelaufen, geholfen, gekämpft und Fußball gespielt. Mit Herz, mit Mut, mit Löwen-Mentalität. SSVg!','Wir gehen raus wie eine Wand und wie ein Rudel. Einer für alle, alle für einen. Heute zeigen wir unsere Löwen-Seele!'];
+let ending=level==='Ruhig und klar'?pick(endNormal):(level==='Stark motivierend'?pick(endStrong):pick(endExtreme));
+let extra=note?'\n\nWichtig heute: '+note+'.':'';
+let speech=anrede+',\n\n'+pick(start)+'\n\n'+pick(middle)+extra+'\n\n'+ending;
+document.getElementById('output').value=speech;
+document.getElementById('msg').textContent='Ansprache erstellt.';
+}
+function copySpeech(){
+const out=document.getElementById('output');
+out.select();out.setSelectionRange(0,99999);
+document.execCommand('copy');
+document.getElementById('msg').textContent='Text kopiert.';
+}
+generateSpeech();
+</script>
+</body>
+</html>
