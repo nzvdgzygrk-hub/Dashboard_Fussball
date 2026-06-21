@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sponsoren / Angebote</title>
+<meta name="theme-color" content="#0b1020">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Sponsoren">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon.svg">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0b1020;color:#f4f7fb;padding:16px}
+.wrap{max-width:860px;margin:auto}
+header{background:#141b2d;border:1px solid #263247;border-radius:22px;padding:18px;margin-bottom:14px}
+.back{display:inline-block;color:#a9b3c7;text-decoration:none;font-size:14px;margin-bottom:10px}
+h1{margin:0 0 6px;font-size:27px}
+.sub{margin:0;color:#a9b3c7;font-size:14px;line-height:1.45}
+.box{background:#101726;border:1px solid #263247;border-radius:22px;padding:14px;margin-bottom:14px}
+.grid{display:grid;grid-template-columns:1fr;gap:10px}
+label{display:block;color:#a9b3c7;font-size:12px;margin-bottom:4px}
+input,select,textarea,button{font-family:Arial,Helvetica,sans-serif}
+input[type=text],input[type=date],input[type=number],select,textarea{width:100%;border:1px solid #263247;border-radius:12px;background:#0b1220;color:#f4f7fb;padding:11px;font-size:15px}
+input[type=file]{width:100%;border:1px dashed #394760;border-radius:12px;background:#0b1220;color:#f4f7fb;padding:12px;font-size:14px}
+textarea{min-height:74px}
+button{border:0;border-radius:14px;padding:12px 14px;font-weight:bold;cursor:pointer}
+.primary{background:#2f80ed;color:#fff;width:100%}
+.secondary{background:#263247;color:#fff}
+.danger{background:#3a1f28;color:#fff}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row button,.row a{flex:1;min-width:120px;text-align:center}
+.filecard{background:#141b2d;border:1px solid #263247;border-radius:17px;padding:13px;margin-bottom:10px}
+.filetop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.title{font-weight:bold;font-size:16px;line-height:1.25}
+.badge{font-size:12px;color:#d8e2f7;background:#263247;border-radius:999px;padding:5px 8px;white-space:nowrap}
+.meta{color:#a9b3c7;font-size:12px;line-height:1.5;margin-top:8px}
+.note{white-space:pre-wrap;color:#e6edf7;font-size:13px;line-height:1.45;margin-top:8px}
+.hint{color:#a9b3c7;font-size:12px;line-height:1.45;margin:8px 0 0}
+.empty{color:#a9b3c7;text-align:center;padding:18px;border:1px dashed #263247;border-radius:17px}
+a.btn{display:inline-block;text-decoration:none;border-radius:14px;padding:12px 14px;font-weight:bold;background:#263247;color:#fff}
+.searchbar{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:10px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
+.stat{background:#141b2d;border:1px solid #263247;border-radius:17px;padding:12px}
+.stat b{font-size:18px}
+.stat span{display:block;color:#a9b3c7;font-size:12px;margin-top:3px}
+footer{text-align:center;color:#a9b3c7;font-size:12px;margin-top:22px}
+@media(min-width:720px){
+.grid{grid-template-columns:1fr 1fr}
+.full{grid-column:1/-1}
+.searchbar{grid-template-columns:1fr 190px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<a class="back" href="index.html">‹ Zurück zum Dashboard</a>
+<header>
+<h1>📁 Sponsoren / Angebote</h1>
+<p class="sub">Ablage für Angebote, Größenlisten, Rechnungen und Notizen. Die Dateien werden ohne Firebase oder Google-Setup direkt auf diesem Gerät gespeichert.</p>
+</header>
+
+<section class="box">
+<form id="form">
+<div class="grid">
+<div>
+<label>Titel</label>
+<input id="title" type="text" placeholder="z. B. Angebot Sportdirekt Präsentationsanzug" required>
+</div>
+<div>
+<label>Sponsor / Firma</label>
+<input id="sponsor" type="text" placeholder="z. B. Sportdirekt, Firma Mustermann">
+</div>
+<div>
+<label>Bereich</label>
+<select id="category">
+<option>Präsentationsanzug</option>
+<option>1. Trikotsatz</option>
+<option>2. Trikotsatz</option>
+<option>Winterjacke</option>
+<option>Trainingsanzug</option>
+<option>Größenliste</option>
+<option>Rechnung</option>
+<option>Sonstiges</option>
+</select>
+</div>
+<div>
+<label>Status</label>
+<select id="status">
+<option>Angefragt</option>
+<option>Angebot erhalten</option>
+<option>Sponsor zugesagt</option>
+<option>Offen</option>
+<option>Bestellt</option>
+<option>Bezahlt / erledigt</option>
+</select>
+</div>
+<div>
+<label>Datum</label>
+<input id="date" type="date">
+</div>
+<div>
+<label>Betrag in Euro</label>
+<input id="amount" type="number" step="0.01" inputmode="decimal" placeholder="optional">
+</div>
+<div class="full">
+<label>Datei</label>
+<input id="file" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp,.doc,.docx,.xls,.xlsx,.txt,image/*,application/pdf">
+</div>
+<div class="full">
+<label>Notiz</label>
+<textarea id="note" placeholder="z. B. 164 und S angefragt, S = Erwachsenengröße, Preisunterschied beachten"></textarea>
+</div>
+</div>
+<p class="hint">Hinweis: Ohne Firebase/Google Drive ist diese Ablage nur auf dem aktuellen Gerät/Browser verfügbar. Für dich ist das die Version ohne weitere Einrichtung.</p>
+<br>
+<button class="primary" type="submit">Eintrag speichern</button>
+</form>
+</section>
+
+<section class="box">
+<div class="stats">
+<div class="stat"><b id="total">0</b><span>Einträge</span></div>
+<div class="stat"><b id="sum">0,00 €</b><span>Gesamtbetrag</span></div>
+</div>
+<div class="searchbar">
+<input id="search" type="text" placeholder="Suchen nach Sponsor, Titel, Notiz ...">
+<select id="filter">
+<option value="">Alle Bereiche</option>
+<option>Präsentationsanzug</option>
+<option>1. Trikotsatz</option>
+<option>2. Trikotsatz</option>
+<option>Winterjacke</option>
+<option>Trainingsanzug</option>
+<option>Größenliste</option>
+<option>Rechnung</option>
+<option>Sonstiges</option>
+</select>
+</div>
+<div id="list"></div>
+</section>
+
+<footer>Programmiert von F. Kaplan</footer>
+</div>
+
+<script>
+const DB_NAME='ssvg_sponsoren_angebote_v1';
+const STORE='angebote';
+let db;
+let entries=[];
+
+function openDb(){
+ return new Promise((resolve,reject)=>{
+  const req=indexedDB.open(DB_NAME,1);
+  req.onupgradeneeded=()=>{req.result.createObjectStore(STORE,{keyPath:'id'});}
+  req.onsuccess=()=>{db=req.result;resolve(db);}
+  req.onerror=()=>reject(req.error);
+ });
+}
+
+function tx(mode='readonly'){
+ return db.transaction(STORE,mode).objectStore(STORE);
+}
+
+function getAll(){
+ return new Promise((resolve,reject)=>{
+  const req=tx().getAll();
+  req.onsuccess=()=>resolve(req.result||[]);
+  req.onerror=()=>reject(req.error);
+ });
+}
+
+function put(item){
+ return new Promise((resolve,reject)=>{
+  const req=tx('readwrite').put(item);
+  req.onsuccess=()=>resolve();
+  req.onerror=()=>reject(req.error);
+ });
+}
+
+function del(id){
+ return new Promise((resolve,reject)=>{
+  const req=tx('readwrite').delete(id);
+  req.onsuccess=()=>resolve();
+  req.onerror=()=>reject(req.error);
+ });
+}
+
+function esc(s){
+ return String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+}
+
+function money(n){
+ const v=Number(n||0);
+ return v.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
+}
+
+function sizeText(bytes){
+ if(!bytes)return '';
+ const units=['B','KB','MB','GB'];
+ let n=bytes,i=0;
+ while(n>=1024&&i<units.length-1){n/=1024;i++;}
+ return n.toFixed(i?1:0).replace('.',',')+' '+units[i];
+}
+
+async function refresh(){
+ entries=await getAll();
+ entries.sort((a,b)=>(b.created||0)-(a.created||0));
+ render();
+}
+
+function render(){
+ const q=document.getElementById('search').value.trim().toLowerCase();
+ const f=document.getElementById('filter').value;
+ const filtered=entries.filter(x=>{
+  const text=[x.title,x.sponsor,x.category,x.status,x.note,x.fileName].join(' ').toLowerCase();
+  return (!f || x.category===f) && (!q || text.includes(q));
+ });
+ document.getElementById('total').textContent=String(entries.length);
+ document.getElementById('sum').textContent=money(entries.reduce((s,x)=>s+Number(x.amount||0),0));
+ const list=document.getElementById('list');
+ if(!filtered.length){list.innerHTML='<div class="empty">Noch keine passenden Einträge gespeichert.</div>';return;}
+ list.innerHTML='';
+ filtered.forEach(x=>{
+  const div=document.createElement('div');
+  div.className='filecard';
+  const hasFile=!!x.fileBlob;
+  div.innerHTML=
+   '<div class="filetop"><div><div class="title">'+esc(x.title||'Ohne Titel')+'</div><div class="meta">'+
+   esc(x.sponsor||'Kein Sponsor eingetragen')+' · '+esc(x.category||'Sonstiges')+' · '+esc(x.date||'ohne Datum')+
+   (x.amount?(' · '+money(x.amount)):'')+
+   '</div></div><span class="badge">'+esc(x.status||'Offen')+'</span></div>'+
+   (x.note?'<div class="note">'+esc(x.note)+'</div>':'')+
+   '<div class="meta">'+(hasFile?('Datei: '+esc(x.fileName)+' · '+sizeText(x.fileSize)):'Keine Datei hinterlegt')+'</div>'+
+   '<div class="row" style="margin-top:10px">'+
+   (hasFile?'<button class="secondary" data-open="'+x.id+'">Datei öffnen</button>':'')+
+   '<button class="danger" data-del="'+x.id+'">Löschen</button>'+
+   '</div>';
+  list.appendChild(div);
+ });
+}
+
+async function fileFromInput(input){
+ const file=input.files && input.files[0];
+ if(!file)return {blob:null,name:'',type:'',size:0};
+ return {blob:file,name:file.name,type:file.type,size:file.size};
+}
+
+document.getElementById('form').addEventListener('submit',async e=>{
+ e.preventDefault();
+ const file=await fileFromInput(document.getElementById('file'));
+ const item={
+  id:String(Date.now()),
+  created:Date.now(),
+  title:document.getElementById('title').value.trim(),
+  sponsor:document.getElementById('sponsor').value.trim(),
+  category:document.getElementById('category').value,
+  status:document.getElementById('status').value,
+  date:document.getElementById('date').value,
+  amount:document.getElementById('amount').value,
+  note:document.getElementById('note').value.trim(),
+  fileName:file.name,
+  fileType:file.type,
+  fileSize:file.size,
+  fileBlob:file.blob
+ };
+ await put(item);
+ e.target.reset();
+ document.getElementById('date').valueAsDate=new Date();
+ await refresh();
+});
+
+document.getElementById('search').addEventListener('input',render);
+document.getElementById('filter').addEventListener('change',render);
+
+document.addEventListener('click',async e=>{
+ const openId=e.target.dataset.open;
+ const delId=e.target.dataset.del;
+ if(openId){
+  const item=entries.find(x=>x.id===openId);
+  if(item&&item.fileBlob){
+   const url=URL.createObjectURL(item.fileBlob);
+   const a=document.createElement('a');
+   a.href=url;
+   a.target='_blank';
+   a.download=item.fileName||'angebot';
+   document.body.appendChild(a);
+   a.click();
+   a.remove();
+   setTimeout(()=>URL.revokeObjectURL(url),1500);
+  }
+ }
+ if(delId){
+  if(confirm('Eintrag wirklich löschen?')){
+   await del(delId);
+   await refresh();
+  }
+ }
+});
+
+(async()=>{
+ try{
+  await openDb();
+  document.getElementById('date').valueAsDate=new Date();
+  await refresh();
+ }catch(err){
+  document.getElementById('list').innerHTML='<div class="empty">Speichern ist in diesem Browser leider nicht verfügbar.</div>';
+ }
+})();
+</script>
+</body>
+</html>
