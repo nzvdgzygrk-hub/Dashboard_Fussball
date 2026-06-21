@@ -21,6 +21,7 @@
 <div class="grid">
 <a class="card" href="https://nzvdgzygrk-hub.github.io/D1_Ausstattung_V2/"><b>D1 Ausstattung V2 <span>›</span></b><p>Größen, Rückennummern und Ausstattung.</p></a>
 <a class="card" href="https://nzvdgzygrk-hub.github.io/D1_Ausstattung_V2/spieler.html"><b>Spieler verwalten <span>›</span></b><p>Spieler per Code über App Script hinzufügen oder löschen.</p></a>
+<a class="card" href="sponsoren.html"><b>Sponsoren / Angebote <span>›</span></b><p>Dateiablage für Angebote, Größenlisten und Rechnungen.</p></a>
 <a class="card" href="kabine.html"><b>Kabinenansprache Generator <span>›</span></b><p>SSVg-Löwen-Ansprachen für D-Jugend, Halbzeit und Topspiele.</p></a>
 <a class="card" href="https://nzvdgzygrk-hub.github.io/Schwimmbad/"><b>Kontakt-Erinnerung / Auto-Generator <span>›</span></b><p>Kontakte abhaken, sehen wer sich lange nicht gemeldet hat und Texte generieren.</p></a>
 <a class="card" href="https://nzvdgzygrk-hub.github.io/SSVg-Waschliste/"><b>SSVg Waschliste <span>›</span></b><p>Übersicht für Trikots und Waschdienst.</p></a>
@@ -32,9 +33,16 @@
 </div>
 <h2>Checkpoint Stand Sponsor</h2>
 <section class="box">
-<div class="top"><b>Sponsorenstatus</b><span id="count">0 / 0 erledigt</span></div>
+<div class="top"><b>Sponsorenstatus</b><span id="count">0 / 6 erledigt</span></div>
 <div class="bar"><span id="bar"></span></div>
-<div id="list"></div>
+<div id="list">
+<div class="item" data-name="Präsentationsanzug"><div class="head"><input type="checkbox" data-f="done"><div class="title">Präsentationsanzug</div></div><div class="fields"><div><label>Sponsor / Firma</label><input type="text" data-f="sponsor" placeholder="z. B. Firma Mustermann"></div><div><label>Status</label><select data-f="status"><option>Offen</option><option>Angefragt</option><option>Angebot erhalten</option><option>Zugesagt</option><option>Bezahlt / bestätigt</option><option>Erledigt</option></select></div><div class="full"><label>Notiz</label><textarea data-f="note" placeholder="Ansprechpartner, Betrag oder Angebot"></textarea></div></div></div>
+<div class="item" data-name="1. Trikotsatz"><div class="head"><input type="checkbox" data-f="done"><div class="title">1. Trikotsatz</div></div><div class="fields"><div><label>Sponsor / Firma</label><input type="text" data-f="sponsor" placeholder="z. B. Firma Mustermann"></div><div><label>Status</label><select data-f="status"><option>Offen</option><option>Angefragt</option><option>Angebot erhalten</option><option>Zugesagt</option><option>Bezahlt / bestätigt</option><option>Erledigt</option></select></div><div class="full"><label>Notiz</label><textarea data-f="note" placeholder="Ansprechpartner, Betrag oder Angebot"></textarea></div></div></div>
+<div class="item" data-name="2. Trikotsatz"><div class="head"><input type="checkbox" data-f="done"><div class="title">2. Trikotsatz</div></div><div class="fields"><div><label>Sponsor / Firma</label><input type="text" data-f="sponsor" placeholder="z. B. Firma Mustermann"></div><div><label>Status</label><select data-f="status"><option>Offen</option><option>Angefragt</option><option>Angebot erhalten</option><option>Zugesagt</option><option>Bezahlt / bestätigt</option><option>Erledigt</option></select></div><div class="full"><label>Notiz</label><textarea data-f="note" placeholder="Ansprechpartner, Betrag oder Angebot"></textarea></div></div></div>
+<div class="item" data-name="Trainingsanzug"><div class="head"><input type="checkbox" data-f="done"><div class="title">Trainingsanzug</div></div><div class="fields"><div><label>Sponsor / Firma</label><input type="text" data-f="sponsor" placeholder="z. B. Firma Mustermann"></div><div><label>Status</label><select data-f="status"><option>Offen</option><option>Angefragt</option><option>Angebot erhalten</option><option>Zugesagt</option><option>Bezahlt / bestätigt</option><option>Erledigt</option></select></div><div class="full"><label>Notiz</label><textarea data-f="note" placeholder="Ansprechpartner, Betrag oder Angebot"></textarea></div></div></div>
+<div class="item" data-name="Winterjacke"><div class="head"><input type="checkbox" data-f="done"><div class="title">Winterjacke</div></div><div class="fields"><div><label>Sponsor / Firma</label><input type="text" data-f="sponsor" placeholder="z. B. Firma Mustermann"></div><div><label>Status</label><select data-f="status"><option>Offen</option><option>Angefragt</option><option>Angebot erhalten</option><option>Zugesagt</option><option>Bezahlt / bestätigt</option><option>Erledigt</option></select></div><div class="full"><label>Notiz</label><textarea data-f="note" placeholder="Ansprechpartner, Betrag oder Angebot"></textarea></div></div></div>
+<div class="item" data-name="Sonstiges"><div class="head"><input type="checkbox" data-f="done"><div class="title">Sonstiges</div></div><div class="fields"><div><label>Sponsor / Firma</label><input type="text" data-f="sponsor" placeholder="z. B. Firma Mustermann"></div><div><label>Status</label><select data-f="status"><option>Offen</option><option>Angefragt</option><option>Angebot erhalten</option><option>Zugesagt</option><option>Bezahlt / bestätigt</option><option>Erledigt</option></select></div><div class="full"><label>Notiz</label><textarea data-f="note" placeholder="Ansprechpartner, Betrag oder Angebot"></textarea></div></div></div>
+</div>
 <button class="danger" id="resetBtn">Sponsor-Checkpoint zurücksetzen</button>
 <p class="hint">Die Daten werden automatisch auf diesem Gerät gespeichert. Bei einem anderen Handy oder Browser sind die Eingaben nicht automatisch sichtbar.</p>
 </section>
@@ -42,19 +50,47 @@
 </div>
 <script>
 const key='dashboard_fussball_sponsor_v1';
-const names=['Präsentationsanzug','1. Trikotsatz','2. Trikotsatz','Trainingsanzug','Winterjacke','Sonstiges'];
-const statusList=['Offen','Angefragt','Angebot erhalten','Zugesagt','Bezahlt / bestätigt','Erledigt'];
-function fresh(){return names.map(n=>({name:n,done:false,sponsor:'',status:'Offen',note:''}))}
-let data=fresh();
-try{const saved=JSON.parse(localStorage.getItem(key)||'null');if(Array.isArray(saved)){data=names.map((n,i)=>Object.assign(fresh()[i],saved.find(x=>x.name===n)||saved[i]||{}));}}catch(e){}
-function esc(s){return String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
-function save(){localStorage.setItem(key,JSON.stringify(data));progress()}
-function progress(){const done=data.filter(x=>x.done).length,total=data.length,p=Math.round(done/total*100);document.getElementById('count').textContent=done+' / '+total+' erledigt';document.getElementById('bar').style.width=p+'%'}
-function render(){const list=document.getElementById('list');list.innerHTML='';data.forEach((x,i)=>{const item=document.createElement('div');item.className='item';item.innerHTML='<div class="head"><input type="checkbox" '+(x.done?'checked':'')+' data-i="'+i+'" data-f="done"><div class="title">'+esc(x.name)+'</div></div><div class="fields"><div><label>Sponsor / Firma</label><input type="text" value="'+esc(x.sponsor)+'" placeholder="z. B. Firma Mustermann" data-i="'+i+'" data-f="sponsor"></div><div><label>Status</label><select data-i="'+i+'" data-f="status">'+statusList.map(s=>'<option '+(x.status===s?'selected':'')+'>'+s+'</option>').join('')+'</select></div><div class="full"><label>Notiz</label><textarea placeholder="Ansprechpartner, Betrag oder Angebot" data-i="'+i+'" data-f="note">'+esc(x.note)+'</textarea></div></div>';list.appendChild(item)});progress()}
-document.addEventListener('input',e=>{const i=e.target.dataset.i,f=e.target.dataset.f;if(i===undefined)return;data[i][f]=e.target.value;save()});
-document.addEventListener('change',e=>{const i=e.target.dataset.i,f=e.target.dataset.f;if(i===undefined)return;if(f==='done'){data[i].done=e.target.checked;if(e.target.checked&&data[i].status==='Offen')data[i].status='Zugesagt';render()}else{data[i][f]=e.target.value;save()}});
-document.getElementById('resetBtn').addEventListener('click',()=>{data=fresh();save();render()});
-render();
+const defaults=['Präsentationsanzug','1. Trikotsatz','2. Trikotsatz','Trainingsanzug','Winterjacke','Sonstiges'].map(name=>({name,done:false,sponsor:'',status:'Offen',note:''}));
+function load(){
+ let saved=[];
+ try{saved=JSON.parse(localStorage.getItem(key)||'[]')}catch(e){saved=[]}
+ document.querySelectorAll('.item').forEach((item,i)=>{
+  const name=item.dataset.name;
+  const data=saved.find(x=>x.name===name)||saved[i]||defaults[i];
+  item.querySelector('[data-f="done"]').checked=!!data.done;
+  item.querySelector('[data-f="sponsor"]').value=data.sponsor||'';
+  item.querySelector('[data-f="status"]').value=data.status||'Offen';
+  item.querySelector('[data-f="note"]').value=data.note||'';
+ });
+ progress();
+}
+function collect(){
+ return Array.from(document.querySelectorAll('.item')).map(item=>({
+  name:item.dataset.name,
+  done:item.querySelector('[data-f="done"]').checked,
+  sponsor:item.querySelector('[data-f="sponsor"]').value,
+  status:item.querySelector('[data-f="status"]').value,
+  note:item.querySelector('[data-f="note"]').value
+ }));
+}
+function save(){localStorage.setItem(key,JSON.stringify(collect()));progress()}
+function progress(){
+ const data=collect();
+ const done=data.filter(x=>x.done).length,total=data.length,p=Math.round(done/total*100);
+ document.getElementById('count').textContent=done+' / '+total+' erledigt';
+ document.getElementById('bar').style.width=p+'%';
+}
+document.addEventListener('input',save);
+document.addEventListener('change',e=>{
+ if(e.target.dataset.f==='done'){
+  const item=e.target.closest('.item');
+  const select=item.querySelector('[data-f="status"]');
+  if(e.target.checked && select.value==='Offen') select.value='Zugesagt';
+ }
+ save();
+});
+document.getElementById('resetBtn').addEventListener('click',()=>{localStorage.removeItem(key);load()});
+load();
 </script>
 </body>
 </html>
