@@ -11,46 +11,7 @@
 <link rel="icon" href="icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icon.svg">
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0b1020;color:#f4f7fb;padding:16px}
-.wrap{max-width:860px;margin:auto}
-header{background:#141b2d;border:1px solid #263247;border-radius:22px;padding:18px;margin-bottom:14px}
-.back{display:inline-block;color:#a9b3c7;text-decoration:none;font-size:14px;margin-bottom:10px}
-h1{margin:0 0 6px;font-size:27px}
-.sub{margin:0;color:#a9b3c7;font-size:14px;line-height:1.45}
-.box{background:#101726;border:1px solid #263247;border-radius:22px;padding:14px;margin-bottom:14px}
-.grid{display:grid;grid-template-columns:1fr;gap:10px}
-label{display:block;color:#a9b3c7;font-size:12px;margin-bottom:4px}
-input,select,textarea,button{font-family:Arial,Helvetica,sans-serif}
-input[type=text],input[type=date],input[type=number],select,textarea{width:100%;border:1px solid #263247;border-radius:12px;background:#0b1220;color:#f4f7fb;padding:11px;font-size:15px}
-input[type=file]{width:100%;border:1px dashed #394760;border-radius:12px;background:#0b1220;color:#f4f7fb;padding:12px;font-size:14px}
-textarea{min-height:74px}
-button{border:0;border-radius:14px;padding:12px 14px;font-weight:bold;cursor:pointer}
-.primary{background:#2f80ed;color:#fff;width:100%}
-.secondary{background:#263247;color:#fff}
-.danger{background:#3a1f28;color:#fff}
-.row{display:flex;gap:8px;flex-wrap:wrap}
-.row button,.row a{flex:1;min-width:120px;text-align:center}
-.filecard{background:#141b2d;border:1px solid #263247;border-radius:17px;padding:13px;margin-bottom:10px}
-.filetop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-.title{font-weight:bold;font-size:16px;line-height:1.25}
-.badge{font-size:12px;color:#d8e2f7;background:#263247;border-radius:999px;padding:5px 8px;white-space:nowrap}
-.meta{color:#a9b3c7;font-size:12px;line-height:1.5;margin-top:8px}
-.note{white-space:pre-wrap;color:#e6edf7;font-size:13px;line-height:1.45;margin-top:8px}
-.hint{color:#a9b3c7;font-size:12px;line-height:1.45;margin:8px 0 0}
-.empty{color:#a9b3c7;text-align:center;padding:18px;border:1px dashed #263247;border-radius:17px}
-a.btn{display:inline-block;text-decoration:none;border-radius:14px;padding:12px 14px;font-weight:bold;background:#263247;color:#fff}
-.searchbar{display:grid;grid-template-columns:1fr;gap:8px;margin-bottom:10px}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px}
-.stat{background:#141b2d;border:1px solid #263247;border-radius:17px;padding:12px}
-.stat b{font-size:18px}
-.stat span{display:block;color:#a9b3c7;font-size:12px;margin-top:3px}
-footer{text-align:center;color:#a9b3c7;font-size:12px;margin-top:22px}
-@media(min-width:720px){
-.grid{grid-template-columns:1fr 1fr}
-.full{grid-column:1/-1}
-.searchbar{grid-template-columns:1fr 190px}
-}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0b1020;color:#f4f7fb;padding:16px}.wrap{max-width:940px;margin:auto}.back{display:inline-block;color:#a9b3c7;text-decoration:none;font-size:14px;margin-bottom:10px}header,.box{background:#141b2d;border:1px solid #263247;border-radius:22px;padding:18px;margin-bottom:14px}h1{margin:0 0 6px;font-size:27px}h2{font-size:20px;margin:18px 0 10px}.sub,.hint,.meta{color:#a9b3c7;font-size:13px;line-height:1.45}.top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}.bar{height:10px;background:#0b1220;border-radius:999px;overflow:hidden;border:1px solid #263247}.bar span{display:block;height:100%;width:0;background:#2f80ed}.cards{display:grid;grid-template-columns:1fr;gap:12px}.card{background:#101726;border:1px solid #263247;border-radius:20px;padding:14px}.head{display:flex;gap:10px;align-items:center;margin-bottom:12px}.head input{width:24px;height:24px;accent-color:#2ecc71}.name{font-size:20px;font-weight:bold}.fields{display:grid;grid-template-columns:1fr;gap:9px}label{display:block;color:#a9b3c7;font-size:12px;margin-bottom:4px}input[type=text],input[type=date],input[type=number],select,textarea{width:100%;border:1px solid #263247;border-radius:12px;background:#0b1220;color:#f4f7fb;padding:11px;font-size:15px}input[type=file]{width:100%;border:1px dashed #394760;border-radius:12px;background:#0b1220;color:#f4f7fb;padding:12px;font-size:14px}textarea{min-height:70px;font-family:Arial,Helvetica,sans-serif}.upload{background:#0b1220;border:1px dashed #394760;border-radius:16px;padding:12px;margin-top:12px}.files{margin-top:10px}.file{background:#141b2d;border:1px solid #263247;border-radius:14px;padding:11px;margin-top:8px}.file b{display:block;font-size:14px}.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}button{border:0;border-radius:13px;padding:11px 12px;font-weight:bold;color:#fff;background:#263247;cursor:pointer}button.primary{background:#2f80ed;width:100%}button.danger{background:#3a1f28}.statgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px}.stat{background:#101726;border:1px solid #263247;border-radius:16px;padding:12px}.stat b{display:block;font-size:20px}.stat span{color:#a9b3c7;font-size:12px}.full{grid-column:1/-1}footer{text-align:center;color:#a9b3c7;font-size:12px;margin-top:22px}@media(min-width:760px){.cards{grid-template-columns:1fr 1fr}.fields{grid-template-columns:1fr 180px}.upload .fields{grid-template-columns:1fr 150px}.full{grid-column:1/-1}}
 </style>
 </head>
 <body>
@@ -58,256 +19,94 @@ footer{text-align:center;color:#a9b3c7;font-size:12px;margin-top:22px}
 <a class="back" href="index.html">‹ Zurück zum Dashboard</a>
 <header>
 <h1>📁 Sponsoren / Angebote</h1>
-<p class="sub">Ablage für Angebote, Größenlisten, Rechnungen und Notizen. Die Dateien werden ohne Firebase oder Google-Setup direkt auf diesem Gerät gespeichert.</p>
+<p class="sub">Hier ist der Sponsor-Checkpoint mit Dateiablage. Angebote werden direkt beim passenden Bereich abgelegt.</p>
+<div class="statgrid">
+<div class="stat"><b id="doneStat">0 / 6</b><span>erledigt</span></div>
+<div class="stat"><b id="fileStat">0</b><span>Angebote / Dateien</span></div>
+<div class="stat"><b id="sumStat">0,00 €</b><span>Summe</span></div>
+</div>
 </header>
 
 <section class="box">
-<form id="form">
-<div class="grid">
-<div>
-<label>Titel</label>
-<input id="title" type="text" placeholder="z. B. Angebot Sportdirekt Präsentationsanzug" required>
-</div>
-<div>
-<label>Sponsor / Firma</label>
-<input id="sponsor" type="text" placeholder="z. B. Sportdirekt, Firma Mustermann">
-</div>
-<div>
-<label>Bereich</label>
-<select id="category">
-<option>Präsentationsanzug</option>
-<option>1. Trikotsatz</option>
-<option>2. Trikotsatz</option>
-<option>Winterjacke</option>
-<option>Trainingsanzug</option>
-<option>Größenliste</option>
-<option>Rechnung</option>
-<option>Sonstiges</option>
-</select>
-</div>
-<div>
-<label>Status</label>
-<select id="status">
-<option>Angefragt</option>
-<option>Angebot erhalten</option>
-<option>Sponsor zugesagt</option>
-<option>Offen</option>
-<option>Bestellt</option>
-<option>Bezahlt / erledigt</option>
-</select>
-</div>
-<div>
-<label>Datum</label>
-<input id="date" type="date">
-</div>
-<div>
-<label>Betrag in Euro</label>
-<input id="amount" type="number" step="0.01" inputmode="decimal" placeholder="optional">
-</div>
-<div class="full">
-<label>Datei</label>
-<input id="file" type="file" accept=".pdf,.jpg,.jpeg,.png,.webp,.doc,.docx,.xls,.xlsx,.txt,image/*,application/pdf">
-</div>
-<div class="full">
-<label>Notiz</label>
-<textarea id="note" placeholder="z. B. 164 und S angefragt, S = Erwachsenengröße, Preisunterschied beachten"></textarea>
-</div>
-</div>
-<p class="hint">Hinweis: Ohne Firebase/Google Drive ist diese Ablage nur auf dem aktuellen Gerät/Browser verfügbar. Für dich ist das die Version ohne weitere Einrichtung.</p>
-<br>
-<button class="primary" type="submit">Eintrag speichern</button>
-</form>
+<div class="top"><b>Sponsorenstatus</b><span id="count">0 / 6 erledigt</span></div>
+<div class="bar"><span id="bar"></span></div>
+<p class="hint">Die Angaben werden automatisch gespeichert. Die Angebote liegen aktuell auf diesem Gerät/Browser. Für echte Cloud-Speicherung brauchen wir später Firebase oder Google Drive.</p>
 </section>
 
-<section class="box">
-<div class="stats">
-<div class="stat"><b id="total">0</b><span>Einträge</span></div>
-<div class="stat"><b id="sum">0,00 €</b><span>Gesamtbetrag</span></div>
-</div>
-<div class="searchbar">
-<input id="search" type="text" placeholder="Suchen nach Sponsor, Titel, Notiz ...">
-<select id="filter">
-<option value="">Alle Bereiche</option>
-<option>Präsentationsanzug</option>
-<option>1. Trikotsatz</option>
-<option>2. Trikotsatz</option>
-<option>Winterjacke</option>
-<option>Trainingsanzug</option>
-<option>Größenliste</option>
-<option>Rechnung</option>
-<option>Sonstiges</option>
-</select>
-</div>
-<div id="list"></div>
-</section>
-
+<div class="cards" id="cards"></div>
 <footer>Programmiert von F. Kaplan</footer>
 </div>
 
 <script>
+const statusList=['Offen','Angefragt','Angebot erhalten','Zugesagt','Bezahlt / bestätigt','Erledigt'];
+const items=['Präsentationsanzug','1. Trikotsatz','2. Trikotsatz','Trainingsanzug','Winterjacke','Sonstiges'];
+const sponsorKey='dashboard_fussball_sponsor_v1';
 const DB_NAME='ssvg_sponsoren_angebote_v1';
 const STORE='angebote';
-let db;
-let entries=[];
+let sponsors=[];let files=[];let db;
 
-function openDb(){
- return new Promise((resolve,reject)=>{
-  const req=indexedDB.open(DB_NAME,1);
-  req.onupgradeneeded=()=>{req.result.createObjectStore(STORE,{keyPath:'id'});}
-  req.onsuccess=()=>{db=req.result;resolve(db);}
-  req.onerror=()=>reject(req.error);
- });
+function fresh(){return items.map(name=>({name,done:false,sponsor:'',status:'Offen',note:''}))}
+function esc(s){return String(s||'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c]||c))}
+function money(n){const v=Number(String(n||'').replace(',','.'))||0;return v.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2})+' €'}
+function sizeText(bytes){if(!bytes)return '';const u=['B','KB','MB','GB'];let n=bytes,i=0;while(n>=1024&&i<u.length-1){n/=1024;i++}return n.toFixed(i?1:0).replace('.',',')+' '+u[i]}
+
+function loadSponsors(){
+ sponsors=fresh();
+ try{const saved=JSON.parse(localStorage.getItem(sponsorKey)||'[]');if(Array.isArray(saved)){sponsors=items.map((n,i)=>Object.assign(fresh()[i],saved.find(x=>x.name===n)||saved[i]||{}));}}catch(e){}
 }
+function saveSponsors(){localStorage.setItem(sponsorKey,JSON.stringify(sponsors));updateStats()}
+function openDb(){return new Promise((resolve,reject)=>{const r=indexedDB.open(DB_NAME,1);r.onupgradeneeded=()=>{if(!r.result.objectStoreNames.contains(STORE))r.result.createObjectStore(STORE,{keyPath:'id'})};r.onsuccess=()=>{db=r.result;resolve()};r.onerror=()=>reject(r.error)})}
+function store(mode='readonly'){return db.transaction(STORE,mode).objectStore(STORE)}
+function getAllFiles(){return new Promise((resolve,reject)=>{const r=store().getAll();r.onsuccess=()=>resolve(r.result||[]);r.onerror=()=>reject(r.error)})}
+function putFile(x){return new Promise((resolve,reject)=>{const r=store('readwrite').put(x);r.onsuccess=()=>resolve();r.onerror=()=>reject(r.error)})}
+function delFile(id){return new Promise((resolve,reject)=>{const r=store('readwrite').delete(id);r.onsuccess=()=>resolve();r.onerror=()=>reject(r.error)})}
 
-function tx(mode='readonly'){
- return db.transaction(STORE,mode).objectStore(STORE);
-}
-
-function getAll(){
- return new Promise((resolve,reject)=>{
-  const req=tx().getAll();
-  req.onsuccess=()=>resolve(req.result||[]);
-  req.onerror=()=>reject(req.error);
- });
-}
-
-function put(item){
- return new Promise((resolve,reject)=>{
-  const req=tx('readwrite').put(item);
-  req.onsuccess=()=>resolve();
-  req.onerror=()=>reject(req.error);
- });
-}
-
-function del(id){
- return new Promise((resolve,reject)=>{
-  const req=tx('readwrite').delete(id);
-  req.onsuccess=()=>resolve();
-  req.onerror=()=>reject(req.error);
- });
-}
-
-function esc(s){
- return String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-}
-
-function money(n){
- const v=Number(n||0);
- return v.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
-}
-
-function sizeText(bytes){
- if(!bytes)return '';
- const units=['B','KB','MB','GB'];
- let n=bytes,i=0;
- while(n>=1024&&i<units.length-1){n/=1024;i++;}
- return n.toFixed(i?1:0).replace('.',',')+' '+units[i];
-}
-
-async function refresh(){
- entries=await getAll();
- entries.sort((a,b)=>(b.created||0)-(a.created||0));
- render();
-}
-
+function filesFor(category){return files.filter(f=>f.category===category).sort((a,b)=>(b.created||0)-(a.created||0))}
 function render(){
- const q=document.getElementById('search').value.trim().toLowerCase();
- const f=document.getElementById('filter').value;
- const filtered=entries.filter(x=>{
-  const text=[x.title,x.sponsor,x.category,x.status,x.note,x.fileName].join(' ').toLowerCase();
-  return (!f || x.category===f) && (!q || text.includes(q));
+ const cards=document.getElementById('cards');cards.innerHTML='';
+ sponsors.forEach((x,i)=>{
+  const card=document.createElement('section');card.className='card';
+  const fList=filesFor(x.name);
+  card.innerHTML='<div class="head"><input type="checkbox" data-i="'+i+'" data-f="done" '+(x.done?'checked':'')+'><div class="name">'+esc(x.name)+'</div></div>'+ 
+  '<div class="fields"><div><label>Sponsor / Firma</label><input type="text" data-i="'+i+'" data-f="sponsor" value="'+esc(x.sponsor)+'" placeholder="z. B. Firma Mustermann"></div><div><label>Status</label><select data-i="'+i+'" data-f="status">'+statusList.map(s=>'<option '+(x.status===s?'selected':'')+'>'+s+'</option>').join('')+'</select></div><div class="full"><label>Notiz</label><textarea data-i="'+i+'" data-f="note" placeholder="Ansprechpartner, Betrag oder Info">'+esc(x.note)+'</textarea></div></div>'+ 
+  '<div class="upload"><b>Angebot in dieser Spalte ablegen</b><div class="fields" style="margin-top:8px"><div><label>Datei</label><input type="file" id="file_'+i+'" accept=".pdf,.jpg,.jpeg,.png,.webp,.doc,.docx,.xls,.xlsx,.txt,image/*,application/pdf"></div><div><label>Betrag €</label><input type="number" step="0.01" inputmode="decimal" id="amount_'+i+'" placeholder="optional"></div><div><label>Titel</label><input type="text" id="title_'+i+'" placeholder="z. B. Angebot Sportdirekt"></div><div><label>Datum</label><input type="date" id="date_'+i+'"></div><div class="full"><button class="primary" data-add="'+i+'">Angebot speichern</button></div></div><div class="files" id="files_'+i+'">'+renderFiles(fList)+'</div></div>';
+  cards.appendChild(card);
  });
- document.getElementById('total').textContent=String(entries.length);
- document.getElementById('sum').textContent=money(entries.reduce((s,x)=>s+Number(x.amount||0),0));
- const list=document.getElementById('list');
- if(!filtered.length){list.innerHTML='<div class="empty">Noch keine passenden Einträge gespeichert.</div>';return;}
- list.innerHTML='';
- filtered.forEach(x=>{
-  const div=document.createElement('div');
-  div.className='filecard';
-  const hasFile=!!x.fileBlob;
-  div.innerHTML=
-   '<div class="filetop"><div><div class="title">'+esc(x.title||'Ohne Titel')+'</div><div class="meta">'+
-   esc(x.sponsor||'Kein Sponsor eingetragen')+' · '+esc(x.category||'Sonstiges')+' · '+esc(x.date||'ohne Datum')+
-   (x.amount?(' · '+money(x.amount)):'')+
-   '</div></div><span class="badge">'+esc(x.status||'Offen')+'</span></div>'+
-   (x.note?'<div class="note">'+esc(x.note)+'</div>':'')+
-   '<div class="meta">'+(hasFile?('Datei: '+esc(x.fileName)+' · '+sizeText(x.fileSize)):'Keine Datei hinterlegt')+'</div>'+
-   '<div class="row" style="margin-top:10px">'+
-   (hasFile?'<button class="secondary" data-open="'+x.id+'">Datei öffnen</button>':'')+
-   '<button class="danger" data-del="'+x.id+'">Löschen</button>'+
-   '</div>';
-  list.appendChild(div);
- });
+ updateStats();
 }
-
-async function fileFromInput(input){
- const file=input.files && input.files[0];
- if(!file)return {blob:null,name:'',type:'',size:0};
- return {blob:file,name:file.name,type:file.type,size:file.size};
+function renderFiles(list){
+ if(!list.length)return '<p class="hint">Noch kein Angebot abgelegt.</p>';
+ return list.map(f=>'<div class="file"><b>'+esc(f.title||f.fileName||'Angebot')+'</b><div class="meta">'+esc(f.fileName||'ohne Datei')+' · '+esc(f.date||'ohne Datum')+(f.amount?' · '+money(f.amount):'')+(f.fileSize?' · '+sizeText(f.fileSize):'')+'</div><div class="row"><button data-open="'+f.id+'">Öffnen</button><button class="danger" data-del="'+f.id+'">Löschen</button></div></div>').join('')
 }
+function updateStats(){
+ const done=sponsors.filter(x=>x.done).length,total=sponsors.length,p=Math.round(done/total*100);
+ const sum=files.reduce((s,x)=>s+(Number(String(x.amount||'').replace(',','.'))||0),0);
+ document.getElementById('count').textContent=done+' / '+total+' erledigt';
+ document.getElementById('doneStat').textContent=done+' / '+total;
+ document.getElementById('fileStat').textContent=String(files.length);
+ document.getElementById('sumStat').textContent=money(sum);
+ document.getElementById('bar').style.width=p+'%';
+}
+async function refreshFiles(){files=await getAllFiles();render()}
 
-document.getElementById('form').addEventListener('submit',async e=>{
- e.preventDefault();
- const file=await fileFromInput(document.getElementById('file'));
- const item={
-  id:String(Date.now()),
-  created:Date.now(),
-  title:document.getElementById('title').value.trim(),
-  sponsor:document.getElementById('sponsor').value.trim(),
-  category:document.getElementById('category').value,
-  status:document.getElementById('status').value,
-  date:document.getElementById('date').value,
-  amount:document.getElementById('amount').value,
-  note:document.getElementById('note').value.trim(),
-  fileName:file.name,
-  fileType:file.type,
-  fileSize:file.size,
-  fileBlob:file.blob
- };
- await put(item);
- e.target.reset();
- document.getElementById('date').valueAsDate=new Date();
- await refresh();
-});
-
-document.getElementById('search').addEventListener('input',render);
-document.getElementById('filter').addEventListener('change',render);
-
+document.addEventListener('input',e=>{const i=e.target.dataset.i,f=e.target.dataset.f;if(i===undefined)return;sponsors[i][f]=e.target.value;saveSponsors()});
+document.addEventListener('change',e=>{const i=e.target.dataset.i,f=e.target.dataset.f;if(i===undefined)return;if(f==='done'){sponsors[i].done=e.target.checked;if(e.target.checked&&sponsors[i].status==='Offen')sponsors[i].status='Zugesagt';render()}else{sponsors[i][f]=e.target.value;saveSponsors()}});
 document.addEventListener('click',async e=>{
- const openId=e.target.dataset.open;
- const delId=e.target.dataset.del;
- if(openId){
-  const item=entries.find(x=>x.id===openId);
-  if(item&&item.fileBlob){
-   const url=URL.createObjectURL(item.fileBlob);
-   const a=document.createElement('a');
-   a.href=url;
-   a.target='_blank';
-   a.download=item.fileName||'angebot';
-   document.body.appendChild(a);
-   a.click();
-   a.remove();
-   setTimeout(()=>URL.revokeObjectURL(url),1500);
-  }
+ const add=e.target.dataset.add,open=e.target.dataset.open,del=e.target.dataset.del;
+ if(add!==undefined){
+  const i=Number(add),input=document.getElementById('file_'+i),file=input.files&&input.files[0];
+  if(!file){alert('Bitte zuerst eine Datei auswählen.');return}
+  const title=document.getElementById('title_'+i).value.trim()||file.name;
+  const amount=document.getElementById('amount_'+i).value;
+  const date=document.getElementById('date_'+i).value||new Date().toISOString().slice(0,10);
+  await putFile({id:String(Date.now())+'_'+Math.random().toString(16).slice(2),created:Date.now(),category:sponsors[i].name,title,sponsor:sponsors[i].sponsor,status:sponsors[i].status,amount,date,fileName:file.name,fileType:file.type,fileSize:file.size,fileBlob:file});
+  await refreshFiles();
  }
- if(delId){
-  if(confirm('Eintrag wirklich löschen?')){
-   await del(delId);
-   await refresh();
-  }
- }
+ if(open){const f=files.find(x=>x.id===open);if(f&&f.fileBlob){const url=URL.createObjectURL(f.fileBlob);const a=document.createElement('a');a.href=url;a.download=f.fileName||'angebot';a.target='_blank';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500)}}
+ if(del){if(confirm('Angebot wirklich löschen?')){await delFile(del);await refreshFiles()}}
 });
 
-(async()=>{
- try{
-  await openDb();
-  document.getElementById('date').valueAsDate=new Date();
-  await refresh();
- }catch(err){
-  document.getElementById('list').innerHTML='<div class="empty">Speichern ist in diesem Browser leider nicht verfügbar.</div>';
- }
-})();
+(async()=>{loadSponsors();try{await openDb();await refreshFiles()}catch(e){document.getElementById('cards').innerHTML='<section class="card"><p class="hint">Speichern ist in diesem Browser leider nicht verfügbar.</p></section>'}})();
 </script>
 </body>
 </html>
