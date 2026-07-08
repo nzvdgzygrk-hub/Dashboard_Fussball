@@ -1,6 +1,6 @@
 {
   "name": "SSVg Material zählen",
-  "short_name": "Material",
+  "short_name": "Zählen",
   "start_url": "./zaehlen.html",
   "scope": "./",
   "display": "standalone",
@@ -8,7 +8,7 @@
   "theme_color": "#0b1020",
   "icons": [
     {
-      "src": "icon-material.svg",
+      "src": "zaehlen-icon.svg?v=4",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"
