@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <rect width="512" height="512" rx="112" fill="#0b1020"/>
-  <circle cx="256" cy="256" r="205" fill="#141b2d" stroke="#2f80ed" stroke-width="18"/>
-  <text x="256" y="242" text-anchor="middle" font-size="180" font-family="Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, sans-serif">🦁</text>
-  <text x="356" y="365" text-anchor="middle" font-size="92" font-family="Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, sans-serif">⚽</text>
-  <text x="256" y="440" text-anchor="middle" font-size="48" font-weight="800" fill="#f4f7fb" font-family="Arial, Helvetica, sans-serif">DASH</text>
+  <circle cx="256" cy="256" r="204" fill="#141b2d" stroke="#2f80ed" stroke-width="18"/>
+  <text x="256" y="198" text-anchor="middle" font-size="88" font-family="Arial, Helvetica, sans-serif" font-weight="900" fill="#f4f7fb">SSVg</text>
+  <text x="256" y="308" text-anchor="middle" font-size="118" font-family="Arial, Helvetica, sans-serif" font-weight="900" fill="#f4f7fb">D1</text>
+  <text x="256" y="410" text-anchor="middle" font-size="58" font-family="Arial, Helvetica, sans-serif" font-weight="900" fill="#a9d0ff">BALL</text>
 </svg>
