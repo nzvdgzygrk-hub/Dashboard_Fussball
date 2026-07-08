@@ -54,14 +54,14 @@ const KEY='ssvg_material_zaehlen_v2';
 const oldKey='ssvg_material_zaehlen_v1';
 const defaultState={
   materials:[{name:'Trikots',count:0},{name:'Bälle',count:0},{name:'Hütchen',count:0}],
-  players:['Ahmet Süslü','Aos Alnabelsi','Benjamin','David Weber','Efe Kaplan','Elias','Jannik Hähnel','Jonas Koromilas','Julian Hähnel','Kirill Braun','Malik Vaak','Mario','Paul Herholz','Piotrek','Semih Diner'],
+  players:['Ahmet Süslü','Aos Alnabelsi','Benjamin','David Weber','Efe Kaplan','Elias','Flitzer','Jannik Hähnel','Jonas Koromilas','Julian Hähnel','Kirill Braun','Malik Vaak','Mario K.','Mika','Noel','Paul B.','Paul Herholz','Piotr Kowalski','Semih Diner'],
   checks:{}
 };
 const $=id=>document.getElementById(id);
 function clone(obj){return JSON.parse(JSON.stringify(obj))}
-function load(){try{let raw=localStorage.getItem(KEY)||localStorage.getItem(oldKey);if(raw){const s=JSON.parse(raw);return {...clone(defaultState),...s,materials:Array.isArray(s.materials)?s.materials:clone(defaultState).materials,players:Array.isArray(s.players)?s.players:clone(defaultState).players,checks:s.checks||{}}}}catch(e){console.warn(e)}return clone(defaultState)}
-function save(s){localStorage.setItem(KEY,JSON.stringify(s))}
 function sortNames(arr){return [...new Set(arr.map(x=>String(x).trim()).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'de',{sensitivity:'base'}))}
+function load(){try{let raw=localStorage.getItem(KEY)||localStorage.getItem(oldKey);if(raw){const s=JSON.parse(raw);return {...clone(defaultState),...s,materials:Array.isArray(s.materials)?s.materials:clone(defaultState).materials,players:sortNames([...(Array.isArray(s.players)?s.players:[]),...defaultState.players]),checks:s.checks||{}}}}catch(e){console.warn(e)}return clone(defaultState)}
+function save(s){localStorage.setItem(KEY,JSON.stringify(s))}
 function renderMaterials(){const s=load();const list=$('material-list');list.innerHTML='';s.materials.forEach((m,i)=>{const row=document.createElement('div');row.className='row';const label=document.createElement('label');label.textContent=m.name;const input=document.createElement('input');input.type='number';input.min='0';input.step='1';input.value=Number(m.count||0);input.addEventListener('input',()=>{const next=load();next.materials[i].count=Number(input.value||0);save(next)});const del=document.createElement('button');del.className='danger';del.textContent='Löschen';del.addEventListener('click',()=>{const next=load();next.materials.splice(i,1);save(next);renderMaterials()});row.append(label,input,del);list.appendChild(row)})}
 function renderPlayers(){const s=load();s.players=sortNames(s.players);save(s);const list=$('player-list');list.innerHTML='';let checked=0;s.players.forEach(name=>{if(s.checks[name])checked++;const li=document.createElement('li');li.className='player'+(s.checks[name]?' done':'');const cb=document.createElement('input');cb.type='checkbox';cb.checked=!!s.checks[name];cb.addEventListener('change',()=>{const next=load();next.checks[name]=cb.checked;save(next);renderPlayers()});const label=document.createElement('label');label.textContent=name;const del=document.createElement('button');del.className='danger smallbtn';del.textContent='Löschen';del.addEventListener('click',()=>{const next=load();next.players=next.players.filter(p=>p!==name);delete next.checks[name];save(next);renderPlayers()});li.append(cb,label,del);list.appendChild(li)});$('player-count').textContent=`${checked} von ${s.players.length} abgehakt.`}
 function render(){renderMaterials();renderPlayers()}
